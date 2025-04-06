@@ -7,13 +7,59 @@
     <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-gray-100 dark:bg-gray-900">
-    <header>
-        <h1 class="text-3xl font-bold text-center">Welcome to the Workout App</h1>
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
+    <header class="bg-white dark:bg-gray-800 shadow-sm p-6">
+        <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-white">Workout Tracker</h1>
     </header>
-    <main>
-        <p class="text-center">Track your workouts, stay hydrated, and nudge your friends!</p>
+    
+    <main class="flex-1 flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden p-8 text-center">
+            <div class="mb-8">
+                <i class="fas fa-dumbbell text-5xl text-blue-500 mb-4"></i>
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Track Your Fitness Journey</h2>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Log workouts, track water intake, and motivate friends - all in one place
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <a href="login.html" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 dark:bg-blue-500 dark:hover:bg-blue-600">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Login
+                </a>
+                
+                <a href="signup.html" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-4 rounded-lg transition duration-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white">
+                    <i class="fas fa-user-plus mr-2"></i> Create Account
+                </a>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">FEATURES</h3>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Workout Logging</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Water Tracking</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Exercise Templates</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        <span class="text-gray-700 dark:text-gray-300">Friend Motivation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    
+    <footer class="bg-white dark:bg-gray-800 p-4 text-center text-sm text-gray-500 dark:text-gray-400">
+        © 2023 Workout Tracker App
+    </footer>
 </body>
 </html>
