@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates | Workout App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white dark:bg-gray-800 shadow-sm p-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-800 dark:text-white">Workout Templates</h1>
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4">
+            <!-- Template Creation -->
+            <div class="mb-6 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Create New Template</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Template Name</label>
+                        <input type="text" id="templateName" 
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                               placeholder="e.g. Chest Day, Leg Routine">
+                    </div>
+
+                    <!-- Exercise Search -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Add Exercises</label>
+                        <div class="relative">
+                            <input type="text" id="templateExerciseSearch" placeholder="Search exercises to add..." 
+                                   class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+                            <button id="templateSearchBtn" class="absolute right-2 top-2 text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div id="templateSearchResults" class="hidden mt-2 bg-white dark:bg-gray-800 rounded-lg shadow max-h-60 overflow-y-auto">
+                            <!-- Search results will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Selected Exercises -->
+                    <div id="templateExercises" class="space-y-3">
+                        <!-- Exercise cards will be added here -->
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg shadow p-3 hidden" id="templateExerciseTemplate">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-medium text-gray-800 dark:text-white">Exercise Name</h3>
+                                <button class="text-red-500 hover:text-red-700 dark:hover:text-red-400">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 mt-2">
+                                <div>
+                                    <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Sets</label>
+                                    <input type="number" min="1" value="3" class="w-full px-2 py-1 border rounded text-center dark:bg-gray-600 dark:border-gray-500 dark:text-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Reps</label>
+                                    <input type="number" min="1" value="10" class="w-full px-2 py-1 border rounded text-center dark:bg-gray-600 dark:border-gray-500 dark:text-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Rest</label>
+                                    <input type="text" placeholder="60s" class="w-full px-2 py-1 border rounded text-center dark:bg-gray-600 dark:border-gray-500 dark:text-white">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="saveTemplateBtn" 
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 dark:bg-blue-500 dark:hover:bg-blue-600">
+                        Save Template
+                    </button>
+                </div>
+            </div>
+
+            <!-- Saved Templates -->
+            <div>
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Your Templates</h2>
+                <div id="savedTemplates" class="space-y-3">
+                    <!-- Template cards will be added here -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+                        <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
+                            <h3 class="font-medium text-gray-800 dark:text-white">Chest Day</h3>
+                            <div class="flex space-x-2">
+                                <button class="use-template-btn bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-1 px-3 rounded-full transition duration-200 dark:bg-blue-500 dark:hover:bg-blue-600">
+                                    Use <i class="fas fa-play ml-1"></i>
+                                </button>
+                                <button class="edit-template-btn bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium py-1 px-3 rounded-full transition duration-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white">
+                                    Edit <i class="fas fa-pencil-alt ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center py-2 border-b dark:border-gray-700">
+                                <span class="text-gray-800 dark:text-white">Bench Press</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">3x8</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b dark:border-gray-700">
+                                <span class="text-gray-800 dark:text-white">Incline Dumbbell Press</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">3x10</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-gray-800 dark:text-white">Cable Fly</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">3x12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-2">
+            <div class="flex justify-around">
+                <a href="dashboard.html" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-home text-xl"></i>
+                </a>
+                <a href="water-tracker.html" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-tint text-xl"></i>
+                </a>
+                <a href="friends.html" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-users text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-cog text-xl"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
