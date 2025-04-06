@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Workout | Workout App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white dark:bg-gray-800 shadow-sm p-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-800 dark:text-white">Log Workout</h1>
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="text-gray-600 dark:text-gray-300">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4">
+            <!-- Date Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Workout Date</label>
+                <input type="date" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+            </div>
+
+            <!-- Exercise Search -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Search Exercises</label>
+                <div class="relative">
+                    <input type="text" id="exerciseSearch" placeholder="Search for exercises..." 
+                           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+                    <button id="searchBtn" class="absolute right-2 top-2 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="searchResults" class="hidden mt-2 bg-white dark:bg-gray-800 rounded-lg shadow max-h-60 overflow-y-auto">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+
+            <!-- Selected Exercises -->
+            <div id="selectedExercises" class="space-y-4 mb-6">
+                <!-- Exercise cards will be added here -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 hidden" id="exerciseTemplate">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-medium text-gray-800 dark:text-white">Exercise Name</h3>
+                        <button class="text-red-500 hover:text-red-700 dark:hover:text-red-400">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Sets</label>
+                            <input type="number" min="1" value="3" class="w-full px-2 py-1 border rounded text-center dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Reps</label>
+                            <input type="number" min="1" value="10" class="w-full px-2 py-1 border rounded text-center dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Weight</label>
+                            <input type="number" min="0" placeholder="kg" class="w-full px-2 py-1 border rounded text-center dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Notes</label>
+                <textarea class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" rows="3" placeholder="Any additional notes about your workout..."></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 dark:bg-blue-500 dark:hover:bg-blue-600">
+                Save Workout
+            </button>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-2">
+            <div class="flex justify-around">
+                <a href="dashboard.html" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-home text-xl"></i>
+                </a>
+                <a href="water-tracker.html" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-tint text-xl"></i>
+                </a>
+                <a href="friends.html" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-users text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-600 dark:text-gray-400 p-2">
+                    <i class="fas fa-cog text-xl"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
